@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Midterm Two Store</title>
+  </head>
+
+  <body>
+    <div class="content">
+      <h2>CS 260</h2>
+      <h1>Shopping Interface</h1>
+    </div>
+
+    <div id="app" class="content">
+      <section class="image-gallery">
+        <div class="image" v-for="item in items">
+          <input type="checkbox" name="purchaseBox" />
+          <p>{{ item.name }} - price {{ item.price }}</p>
+          <img :src="item.path" />
+        </div>
+    </div>
+
+    <div class="footer">
+      <p>
+        <a href="admin.html">Store Management</a>
+      </p>
+      <p>
+        <a target="_blank" href="https://github.com/jpstrommen95/MidtermTwoStore.git">Midterm Two Github</a>
+      </p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+
+</html>
