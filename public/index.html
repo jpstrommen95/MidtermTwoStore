@@ -14,12 +14,27 @@
     </div>
 
     <div id="app" class="content">
+
+      <h1>Current Products</h1>
       <section class="image-gallery">
         <div class="image" v-for="item in items">
-          <input type="checkbox" name="purchaseBox" />
+          <input type="checkbox" v-model="item.isSelected" name="purchaseBox" @click="madePurchase = false" />
           <p>{{ item.name }} - price {{ item.price }}</p>
-          <img :src="item.path" />
+          <img :src="item.url" />
         </div>
+      </section>
+      <button @click="editItems">Submit Purchase</button>
+
+      <div v-if="madePurchase">
+        <h1>Shopping Cart</h1>
+        <section class="image-gallery">
+          <div class="image" v-for="item in selectedItems">
+            <p>{{ item.name }} - price {{ item.price }}</p>
+            <img :src="item.url" />
+          </div>
+        </section>
+      </div>
+
     </div>
 
     <div class="footer">

@@ -7,6 +7,7 @@ body {
 }
 
 /* Header */
+
 .header {
   display: flex;
   padding: 20px 100px 0px 100px;
@@ -18,7 +19,8 @@ body {
   margin-top: 10px;
 }
 
-.title h1, .title h2 {
+.title h1,
+.title h2 {
   margin: 0px;
 }
 
@@ -27,6 +29,7 @@ body {
 }
 
 /* Footer */
+
 .footer {
   height: 50px;
   padding: 20px 100px 0px 100px;
@@ -37,6 +40,7 @@ body {
 }
 
 /* Content */
+
 .content {
   padding: 20px 100px 0px 100px;
 }
@@ -47,6 +51,7 @@ body {
 }
 
 /* Admin */
+
 .heading {
   display: flex;
   margin-bottom: 20px;
@@ -58,7 +63,8 @@ body {
   margin-left: 10px;
 }
 
-.add, .edit {
+.add,
+.products {
   display: flex;
 }
 
@@ -73,7 +79,11 @@ body {
 }
 
 /* Form */
-input, textarea, select, button {
+
+input,
+textarea,
+select,
+button {
   font-family: 'Montserrat', sans-serif;
   font-size: 1em;
 }
@@ -83,6 +93,7 @@ input, textarea, select, button {
 }
 
 /* Uploaded images */
+
 .upload h2 {
   margin: 0px;
 }
@@ -92,6 +103,7 @@ input, textarea, select, button {
 }
 
 /* Suggestions */
+
 .suggestions {
   width: 200px;
   border: 1px solid #ccc;
@@ -107,6 +119,7 @@ input, textarea, select, button {
 }
 
 /* Masonry */
+
 html {
   box-sizing: border-box;
 }
@@ -132,6 +145,7 @@ html {
 }
 
 /* Masonry on large screens */
+
 @media only screen and (min-width: 1024px) {
   .image-gallery {
     column-count: 4;
@@ -139,6 +153,7 @@ html {
 }
 
 /* Masonry on medium-sized screens */
+
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .image-gallery {
     column-count: 3;
@@ -146,6 +161,7 @@ html {
 }
 
 /* Masonry on small screens */
+
 @media only screen and (max-width: 767px) and (min-width: 540px) {
   .image-gallery {
     column-count: 2;

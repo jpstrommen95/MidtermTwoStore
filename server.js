@@ -23,22 +23,13 @@ const itemSchema = new mongoose.Schema({
   name: String,
   price: Number,
   quantity: Number,
-  path: String,
+  url: String,
 });
 
-// Create a model for items in the museum.
+// Create a model for items in the store
 const Item = mongoose.model('Item', itemSchema);
 
-// Configure multer so that it will upload to '/public/images'
-const multer = require('multer');
-const upload = multer({
-  dest: './public/images/',
-  limits: {
-    fileSize: 10000000
-  }
-});
-
-// Get a list of all of the items in the museum.
+// Get a list of all of the items in the store
 app.get('/api/items', async(req, res) => {
   try {
     let items = await Item.find();
@@ -50,24 +41,25 @@ app.get('/api/items', async(req, res) => {
   }
 });
 
-// Upload a photo. Uses the multer middleware for the upload and then returns
-// the path where the photo is stored in the file system.
-app.post('/api/photos', upload.single('photo'), async(req, res) => {
-  // Just a safety check
-  if (!req.file) {
-    return res.sendStatus(400);
-  }
-  res.send({
-    path: "/images/" + req.file.filename,
-  });
-});
+// // Upload a photo. Uses the multer middleware for the upload and then returns
+// // the path where the photo is stored in the file system.
+// app.post('/api/photos', upload.single('photo'), async(req, res) => {
+//   // Just a safety check
+//   if (!req.file) {
+//     return res.sendStatus(400);
+//   }
+//   res.send({
+//     path: "/images/" + req.file.filename,
+//   });
+// });
 
-// Create a new item in the museum: takes a title, desc, and a path to an image.
+// Create a new item in the store
 app.post('/api/items', async(req, res) => {
   const item = new Item({
-    title: req.body.title,
-    description: req.body.description,
-    path: req.body.path,
+    name: req.body.name,
+    price: req.body.price,
+    quantity: req.body.quantity,
+    url: req.body.url,
   });
   try {
     await item.save();
@@ -79,24 +71,21 @@ app.post('/api/items', async(req, res) => {
   }
 });
 
-// PUT edit a museum item title and desc
+// PUT edit an item to increase the quantity
 app.put('/api/items/:id', async(req, res) => {
   try {
     let editItem = {
       _id: req.params.id,
     };
-    let newTitle = req.body.title;
-    let newDesc = req.body.description;
+    let newQuantity = req.body.quantity;
+    // let newTitle = req.body.title;
+    // let newDesc = req.body.description;
 
     console.log("Editing item with id:");
     console.log(editItem);
-    console.log("with new title:");
-    console.log(newTitle);
-    console.log("and new description:");
-    console.log(newDesc);
+
     let newItem = await Item.findOne(editItem);
-    newItem.title = newTitle;
-    newItem.description = newDesc;
+    newItem.quantity = newQuantity;
     newItem.save();
   }
   catch (error) {

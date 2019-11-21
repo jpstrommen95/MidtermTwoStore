@@ -10,61 +10,66 @@
   <body>
 
     <div id="admin" class="content">
-      <h1>Museum of Ordinary Objects: The Admin Page!</h1>
+      <h1>Store Management Interface</h1>
 
-      <div class="heading">
-        <div class="circle">1</div>
-        <h2>Add an Item</h2>
-      </div>
       <div class="add">
         <div class="form">
-          <input v-model="title" placeholder="Title">
+
+          <label for="Name">Product Name</label>
+          <input v-model="name" title="Name">
+
           <p></p>
-          <input v-model="description" placeholder="Description">
+
+          <label for="Price">Price</label>
+          <input v-model="price" title="Price">
+
           <p></p>
-          <input type="file" name="photo" @change="fileChanged">
-          <p></p>
-          <button @click="upload">Upload</button>
-        </div>
-        <div class="upload" v-if="addItem">
-          <h2>{{addItem.title}}</h2>
-          <img :src="addItem.path" />
+
+          <label for="url">Picture URL</label>
+          <input v-model="url" title="url">
+
+          <button @click="addProduct">Add Product</button>
         </div>
       </div>
 
-      <div class="heading">
-        <div class="circle">2</div>
-        <h2>Edit/Delete an Item</h2>
-      </div>
-      <div class="edit">
-        <div class="form">
-          <input v-model="findTitle" placeholder="Search">
-          <div class="suggestions" v-if="suggestions.length > 0">
-            <div class="suggestion" v-for="s in suggestions" @click="selectItem(s)">{{s.title}}
-            </div>
-          </div>
+      <div class="products">
+
+        <h1>Current Products</h1>
+
+        <div class="image" v-for="item in sortedProducts">
+          <span @click="deleteItem(item)">X</span>
+          <p>{{ item.name }} - price {{ item.price }} - ordered {{ item.quantity }}</p>
+          <img :src="item.path" />
         </div>
-        <div class="upload" v-if="findItem">
-          <input v-model="findItem.title">
-          <p></p>
-          <input v-model="findItem.description">
-          <p></p>
-          <img :src="findItem.path" />
-        </div>
-        <div class="actions" v-if="findItem">
-          <button @click="editItem(findItem)">Edit</button>
-          <button @click="deleteItem(findItem)">Delete</button>
-        </div>
+
+        <!--<div class="form">-->
+        <!--  <input v-model="findTitle" placeholder="Search">-->
+        <!--  <div class="suggestions" v-if="suggestions.length > 0">-->
+        <!--    <div class="suggestion" v-for="s in suggestions" @click="selectItem(s)">{{s.title}}-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--</div>-->
+        <!--<div class="upload" v-if="findItem">-->
+        <!--  <input v-model="findItem.title">-->
+        <!--  <p></p>-->
+        <!--  <input v-model="findItem.description">-->
+        <!--  <p></p>-->
+        <!--  <img :src="findItem.path" />-->
+        <!--</div>-->
+        <!--<div class="actions" v-if="findItem">-->
+        <!--  <button @click="editItem(findItem)">Edit</button>-->
+        <!--  <button @click="deleteItem(findItem)">Delete</button>-->
+        <!--</div>-->
       </div>
 
     </div>
 
     <div class="footer">
       <p>
-        <a href="index.html">Museum</a>
+        <a href="index.html">Shopping Interface</a>
       </p>
       <p>
-        <a target="_blank" href="https://github.com/BYUCS260/lab-5-mongodb-jpstrommen95.git">Lab 5 Github Classroom</a>
+        <a target="_blank" href="https://github.com/jpstrommen95/MidtermTwoStore.git">Midterm Two Github</a>
       </p>
     </div>
 
